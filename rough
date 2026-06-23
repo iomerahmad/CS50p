@@ -1,0 +1,28 @@
+risk_target = float(input("Target Risk ($): "))
+rr_target = float(input("Target RR: "))
+btc_price = float(input("BTC Price ($): "))
+sl_size = float(input("Stop Size ($): "))
+fee_per_side = float(input("Fee per Side (%) [0.0375]: ") or 0.0375)
+
+fee_rate = fee_per_side / 100
+round_trip_fee = btc_price * fee_rate * 2
+
+# BTC position size needed to lose exactly risk_target after fees
+btc_size = risk_target / (sl_size + round_trip_fee)
+
+notional = btc_size * btc_price
+
+gross_risk_needed = risk_target * sl_size / (sl_size + round_trip_fee)
+
+gross_rr_needed = (
+    rr_target * (sl_size + round_trip_fee) + round_trip_fee
+) / sl_size
+
+total_fees_if_stopped = btc_size * round_trip_fee
+
+print("\n--- Results ---")
+print(f"Position Size: {btc_size:.6f} BTC")
+print(f"Position Notional: ${notional:,.2f}")
+print(f"Gross Risk Needed Before Fees: ${gross_risk_needed:.2f}")
+print(f"Gross RR Needed Before Fees: {gross_rr_needed:.2f}R")
+print(f"Total Fees If Stopped: ${total_fees_if_stopped:.2f}")
