@@ -1,10 +1,16 @@
+import json
+import requests 
 import sys
 
-if len(sys.argv) < 2:
-    print("too few arguments")
-elif len(sys.argv) > 2:
-    print("too many arguments")
-else:
-    print("Hello, my name is", sys.argv[1])
+if len(sys.argv) != 2:
+    sys.exit()
+
+
+response = requests.get("https://itunes.apple.com/search?entity=song&limit=50&term=" + sys.argv[1])
+
+o = response.json()
+for result in o["results"]:
+    print(result["trackName"])
+
 
     
