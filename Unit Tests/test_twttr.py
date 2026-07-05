@@ -10,7 +10,7 @@ def test_uppercase():
 
 
 def test_mixed_case():
-    assert shorten("OmEr") == "Mr"
+    assert shorten("OmEr") == "mr"
 
 
 def test_all_vowels():
