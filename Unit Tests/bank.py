@@ -4,9 +4,9 @@ def main():
 
 
 def value(greeting):
-    if greeting.startswith("hello"):
+    if greeting.lstrip().lower().startswith("hello"):
         return "$0"
-    elif greeting.startswith("h"):
+    elif greeting.lstrip().lower().startswith("h"):
         return "$20"
     else:
         return "$100"
