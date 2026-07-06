@@ -1,5 +1,5 @@
-from fuel import converter
+from fuel import convert
 from fuel import gauge
 
-def test_converter():
-    assert converter(35/100) == 35, 100
+def test_convert():
+    assert convert(35/100) == 35, 100
