@@ -1,4 +1,4 @@
 from plates import is_valid
 
 def test_plate():
-    assert is_valid("OMER12") == True
+    assert is_valid("omer12") == True
