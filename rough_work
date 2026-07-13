@@ -1,0 +1,5 @@
+names = input("whats your name? ")
+
+files = open("names.txt", "a")
+files.write(f"{names}\n")
+files.close()
