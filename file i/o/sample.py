@@ -14,7 +14,7 @@ def main():
                 for lines in file:
                     if lines.lstrip().startswith("#"):
                         pass
-                    elif lines.lstrip().startswith(""):
+                    elif lines.lstrip() == "":
                         pass
                     else:
                         line += 1
