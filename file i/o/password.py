@@ -2,36 +2,33 @@ def main():
     while True:
         password = input("Input Password: ")
         result = check(password)
-        if result == True:
+        if result == []:
             print("Valid password ")
             break
-        elif result == "Password must contain atleast 1 capital letter":
-            print("Password must contain atleast 1 capital letter")
-        elif result == "Password must contain atleast 1 number":
-            print("Password must contain atleast 1 number")
-        elif result == "Password too short":
-            print("Password too short")
+        else:
+            print(result)
 
-def check(password: str) -> bool | str:
+
+def check(password: str) -> list[str]:
+    """Return a list of validation errors; empty list means valid."""
+    errors = []
+    capital = False
+    number = False
     if len(password) >= 8:
-        capital = False
-        number = False
         for letter in password:
             if letter.isupper():
                 capital = True
             elif letter.isdigit():
                 number = True
-        if capital and number:
-            return True
-        if not capital:
-            return "Password must contain atleast 1 capital letter"
-        if not number:
-            return "Password must contain atleast 1 number"
-    else:
-        return "Password too short"
-
-            
+    if not len(password) >= 8:
+        errors.append("Password too short")
+    if not capital:
+        errors.append("Password must contain atleast 1 capital letter")
+    if not number:
+        errors.append("Password must contain atleast 1 number")
+    return errors
             
 
 if __name__ == "__main__":
     main()
+
