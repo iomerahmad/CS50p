@@ -82,6 +82,7 @@ def main() -> None:
         return
 
     print("\n--- Trade Plan ---")
+    print(f"Direction: {direction}")
     print(f"Entry: {entry_price:,.2f} USD")
     print(f"TP: {result['tp_price']:,.2f} USD")
     print(f"SL: {result['sl_price']:,.2f} USD")
